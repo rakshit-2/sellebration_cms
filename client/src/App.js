@@ -12,7 +12,7 @@ import Landing from './components/organism/landing';
 import Delete from './components/organism/delete';
 import Err from './components/organism/err';
 import Login from './components/organism/login';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 
 const App=(props)=> {
 
@@ -20,7 +20,12 @@ const App=(props)=> {
 
   const[login,setLogin]=useState(false);
   const[logoutDisplay,setLogoutDisplay]=useState("none")
-
+  useEffect(() => {
+      if(props.login===true)
+      {
+          Navigate('/')
+      }
+    }, []);
   function changeLogin(x)
   {
     setLogin(x);
@@ -41,7 +46,7 @@ const App=(props)=> {
       <Routes>
         <Route path="/" element={<Landing login={login} changeLogin={changeLogin} logoutDisplay={logoutDisplay}/>} ></Route>
         <Route path="/delete" element={<Delete login={login}/>} ></Route>
-        <Route path="/login" element={<Login changeLogin={changeLogin}/>} ></Route>
+        <Route path="/login" element={<Login login={login} changeLogin={changeLogin}/>} ></Route>
         <Route path="/err" element={<Err/>} ></Route>
           <Route
               path="*"
