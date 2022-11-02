@@ -1,0 +1,11 @@
+.err__outer{
+    width:100%;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.err__img{
+    width:40rem;
+    height:30rem;
+}
